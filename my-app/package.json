@@ -4,7 +4,7 @@
     "deploy": "wrangler deploy --minify src/index.ts"
   },
   "dependencies": {
-    "@kaif-siddiqui/common": "^1.0.0",
+    "@kaif-siddiqui/common": "^1.0.1",
     "@prisma/extension-accelerate": "^1.1.0",
     "hono": "^4.4.5",
     "prisma": "^5.15.0"

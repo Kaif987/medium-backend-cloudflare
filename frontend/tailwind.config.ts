@@ -23,6 +23,7 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        tahiti: "#67e8f9",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -51,6 +52,12 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"]
+      },
+      backgroundImage: {
+        'hero-pattern': "url('./bg-image.jpg')"
       },
       borderRadius: {
         lg: "var(--radius)",

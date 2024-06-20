@@ -16,7 +16,8 @@ exports.signinSchema = zod_1.default.object({
 });
 exports.createBlogSchema = zod_1.default.object({
     title: zod_1.default.string(),
-    content: zod_1.default.string()
+    content: zod_1.default.string(),
+    thumbnail: zod_1.default.string()
 });
 exports.updateBlogSchema = zod_1.default.object({
     id: zod_1.default.string(),

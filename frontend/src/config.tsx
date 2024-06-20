@@ -1,0 +1,1 @@
+export const BACKEND_URI = "https://my-app.mdkaifprofession.workers.dev"

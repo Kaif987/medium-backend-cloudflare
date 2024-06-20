@@ -1,6 +1,7 @@
 import { Hono } from 'hono'
 import { userRouter } from './Routes/user'
 import { blogRouter } from './Routes/blog'
+import { cors } from 'hono/cors'
 
 type Variables = {
   userId: string,
@@ -13,6 +14,8 @@ const app = new Hono<{
   },
   Variables: Variables
 }>()
+
+app.use("/*", cors())
 
 // app.use("/*", (c) => {
 //   const prisma = new PrismaClient({
