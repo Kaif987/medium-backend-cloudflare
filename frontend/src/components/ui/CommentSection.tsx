@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom"
 import { useRef, useState } from "react"
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import { useAuth } from "@/hooks/useAuth"
-import { updateCommentSchema } from "@kaif-siddiqui/common"
 
 type CommentSectionProps = {
     postId: string,
@@ -112,14 +111,15 @@ export function CommentSection({ comments, postId }: CommentSectionProps) {
         }
     }
 
-    const deleteComment = (id: string) => {
+    const deleteComment = async (id: string) => {
         try {
-            const response = axios.delete(`${BACKEND_URI}/api/v1/comment/${id}`, {
+            const response = await axios.delete(`${BACKEND_URI}/api/v1/comment/${id}`, {
                 headers: {
                     Authorization: `Bearer ${user?.authToken}`
                 }
             })
 
+            console.log(response.data)
             setCommentsArray(prevComments => {
                 return prevComments.filter(comment => comment.id !== id)
             })
@@ -165,7 +165,7 @@ export function CommentSection({ comments, postId }: CommentSectionProps) {
                         </Avatar>
                         <div className="grid gap-1.5 flex-1">
                             <div className="flex items-center gap-2">
-                                <div className="font-medium">{comment.commentator.name}</div>
+                                <div className="font-medium">{comment.commentator.name || "Anonymous"}</div>
                                 <div className="text-xs text-muted-foreground">2 days ago</div>
                                 {comment.commentator.id === user?.id && (
                                     <div className="ml-auto flex items-center gap-2">
