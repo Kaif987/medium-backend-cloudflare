@@ -48,7 +48,32 @@ export declare const updateBlogSchema: z.ZodObject<{
     content: string;
     id: string;
 }>;
+export declare const createCommentSchema: z.ZodObject<{
+    postId: z.ZodString;
+    comment: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    postId: string;
+    comment: string;
+}, {
+    postId: string;
+    comment: string;
+}>;
+export declare const updateCommentSchema: z.ZodObject<{
+    id: z.ZodString;
+    postId: z.ZodString;
+    comment: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    id: string;
+    postId: string;
+    comment: string;
+}, {
+    id: string;
+    postId: string;
+    comment: string;
+}>;
 export type SignupType = z.infer<typeof signupSchema>;
 export type SigninType = z.infer<typeof signinSchema>;
 export type CreateBlogSchemaType = z.infer<typeof createBlogSchema>;
 export type UpdateBlogSchemaType = z.infer<typeof updateBlogSchema>;
+export type createCommentSchemaType = z.infer<typeof createCommentSchema>;
+export type updateCommentSchemaType = z.infer<typeof updateCommentSchema>;

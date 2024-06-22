@@ -8,6 +8,7 @@ import { BACKEND_URI } from "@/config";
 import axios from "axios";
 import { useState } from "react";
 import { CreateBlogSchemaType } from "@kaif-siddiqui/common";
+import { useAuth } from "@/hooks/useAuth";
 
 export function Create() {
     const navigate = useNavigate()
@@ -16,6 +17,7 @@ export function Create() {
         content: "",
         thumbnail: ""
     })
+    const { user } = useAuth()
 
     const publish = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -23,7 +25,7 @@ export function Create() {
         axios.post(`${BACKEND_URI}/api/v1/blog`, postData, {
             headers: {
                 'Content-Type': "application/json",
-                Authorization: `Bearer ${localStorage.getItem("token")}`
+                Authorization: `Bearer ${user?.authToken}`
             }
         })
             .then(response => response.data)

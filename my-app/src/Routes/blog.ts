@@ -120,9 +120,6 @@ blogRouter.get('/bulk', async (c) => {
     }
 })
 
-
-
-
 blogRouter.get('/:id', async (c) => {
     const id = c.req.param("id")
     const prisma = new PrismaClient({
@@ -140,6 +137,18 @@ blogRouter.get('/:id', async (c) => {
                 content: true,
                 published: true,
                 thumbnail: true,
+                comments: {
+                    select: {
+                        id: true,
+                        comment: true,
+                        commentator: {
+                            select: {
+                                name: true,
+                                id: true,
+                            }
+                        }
+                    }
+                },
                 author: {
                     select: {
                         name: true

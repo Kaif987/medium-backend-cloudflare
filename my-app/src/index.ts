@@ -1,6 +1,8 @@
 import { Hono } from 'hono'
 import { userRouter } from './Routes/user'
 import { blogRouter } from './Routes/blog'
+import { commentRouter } from './Routes/comment'
+
 import { cors } from 'hono/cors'
 
 type Variables = {
@@ -27,6 +29,7 @@ app.use("/*", cors())
 
 app.route("/api/v1/user", userRouter)
 app.route("/api/v1/blog", blogRouter)
+app.route("/api/v1/comment", commentRouter)
 
 
 export default app

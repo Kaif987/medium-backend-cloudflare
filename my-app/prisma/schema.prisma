@@ -14,19 +14,30 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(uuid())
-  email    String  @unique
+  id       String    @id @default(uuid())
+  email    String    @unique
   name     String?
   password String
   posts    Post[]
+  comments Comment[]
 }
 
 model Post {
-  id        String  @id @default(uuid())
+  id        String    @id @default(uuid())
   title     String
   content   String
-  thumbnail String  @default("")
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
+  thumbnail String    @default("")
+  published Boolean   @default(false)
+  author    User      @relation(fields: [authorId], references: [id])
   authorId  String
+  comments  Comment[]
+}
+
+model Comment {
+  id            String @id @default(uuid())
+  commentator   User   @relation(fields: [commentatorId], references: [id])
+  post          Post   @relation(fields: [postId], references: [id])
+  postId        String
+  commentatorId String
+  comment       String
 }

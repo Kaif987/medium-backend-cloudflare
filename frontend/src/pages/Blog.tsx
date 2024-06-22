@@ -1,4 +1,5 @@
 import { BlogSkeleton } from "@/components/ui/BlogSkeleton"
+import { CommentSection } from "@/components/ui/CommentSection"
 import { useBlog } from "@/hooks/useBlog"
 import { useParams } from "react-router-dom"
 
@@ -11,11 +12,11 @@ export function Blog() {
     }
 
     return (
-        <div className="container mx-auto grid grid-cols-1 gap-8 py-12 md:grid-cols-3 md:gap-12 lg:py-16">
+        <div className="container mx-auto grid grid-cols-1 gap-8 py-12 md:grid-cols-3 md:gap-12 lg:pb-16">
             <article className="col-span-2 prose prose-gray max-w-none dark:prose-invert">
                 <div className="space-y-2 not-prose">
-                    <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">{blog.title}</h1>
-                    <p className="text-gray-500 dark:text-gray-400">Published on June 1, 2023</p>
+                    <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl py-6">{blog.title}</h1>
+                    <p className="text-gray-500 dark:text-gray-400 py-4">Published on June 1, 2023</p>
                 </div>
                 <div>
                     {blog.content}
@@ -33,6 +34,7 @@ export function Blog() {
                     </div>
                 </div>
             </div>
+            <CommentSection postId={id || ""} comments={blog.comments} />
         </div>
     )
 }

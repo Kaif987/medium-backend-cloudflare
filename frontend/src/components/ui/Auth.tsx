@@ -6,11 +6,11 @@ import { SignupType } from "@kaif-siddiqui/common"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
 import { BACKEND_URI } from "@/config"
-
-
+import { useAuth } from "@/hooks/useAuth"
 
 export function Auth({ type }: { type: "signup" | "signin" }) {
     const navigate = useNavigate()
+    const { login } = useAuth()
 
     const [postInputs, setPostInputs] = useState<SignupType>({
         email: "",
@@ -25,9 +25,7 @@ export function Auth({ type }: { type: "signup" | "signin" }) {
                 postInputs
             )
             const data = response.data
-            localStorage.setItem("token", data.jwt)
-            localStorage.setItem("email", postInputs.email || "")
-
+            login(data)
             navigate("/blogs")
         } catch (error) {
             alert("an error occured" + error)

@@ -1,9 +1,10 @@
 import { Navigate, Outlet } from 'react-router-dom'
+import { useAuth } from '@/hooks/useAuth'
 
 export const NotLoggedIn = () => {
-    const token = localStorage.getItem("token")
+    const { user } = useAuth()
 
     return (
-        token ? <Navigate to={"/blogs"} /> : <Outlet />
+        user ? <Navigate to={"/blogs"} /> : <Outlet />
     )
 }

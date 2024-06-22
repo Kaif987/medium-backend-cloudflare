@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { BACKEND_URI } from "@/config"
 import axios from "axios"
+import { useAuth } from "./useAuth"
 
 interface BlogType {
     id: string,
@@ -15,11 +16,14 @@ interface BlogType {
 export function useBlogs() {
     const [loading, setLoading] = useState(true)
     const [blogs, setBlogs] = useState<BlogType[]>()
+    const { user } = useAuth()
+
+    console.log({ user })
 
     useEffect(() => {
         axios.get(`${BACKEND_URI}/api/v1/blog/bulk`, {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`
+                Authorization: `Bearer ${user?.authToken}`
             }
         })
             .then(response => response.data)
@@ -27,7 +31,7 @@ export function useBlogs() {
                 setLoading(false)
                 setBlogs(data.posts)
             })
-    }, [])
+    }, [user])
 
     return { loading, blogs }
 }

@@ -9,15 +9,11 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useAuth } from "@/hooks/useAuth";
 
 export function Appbar() {
-    const name = localStorage.getItem("email") || "Anonymous"
-    const navigate = useNavigate()
-
-    const signOut = () => {
-        localStorage.removeItem("token")
-        navigate("/signin")
-    }
+    const { user, logout } = useAuth()
+    const name = user?.name || "Anonymous"
 
     return (
         <nav className="flex justify-between p-5">
@@ -41,7 +37,7 @@ export function Appbar() {
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>Profile</DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => signOut()}>
+                        <DropdownMenuItem onClick={logout}>
                             Logout
                         </DropdownMenuItem>
                     </DropdownMenuContent>
