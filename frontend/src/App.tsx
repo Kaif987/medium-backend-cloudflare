@@ -6,6 +6,7 @@ import { Blogs } from './pages/Blogs'
 import { Create } from './pages/Create'
 import { useEffect } from 'react'
 import { AuthContextProvider } from './context/authContext'
+import { BlogCardSkeleton } from './components/ui/BlogCardSkeleton'
 
 function App() {
   const navigate = useNavigate()
