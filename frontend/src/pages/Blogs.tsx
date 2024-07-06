@@ -9,16 +9,16 @@ export function Blogs() {
     const loadingBlogs = Array(4).fill(0)
 
     return (
-        <>
+        <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-4">
             <Appbar />
-            <section className="w-full py-10 md:py-24 lg:py-16">
-                <div className="container px-4 md:px-6">
+            <section className="w-full">
+                <div className="">
                     <div className="space-y-6">
-                        <div className="flex items-center justify-between">
+                        <div className="flex flex-col justify-between py-9 sm:flex-row" >
                             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Latest from our writers</h2>
-                            <Button variant="link">View all blogs</Button>
+                            <Button variant="link" className="self-start">View all blogs</Button>
                         </div>
-                        <div className="grid gap-6">
+                        <div className="grid gap-14">
                             {loading && loadingBlogs.map(() => {
                                 return <BlogCardSkeleton />
                             })}
@@ -29,6 +29,6 @@ export function Blogs() {
                     </div>
                 </div>
             </section>
-        </>
+        </div>
     )
 }

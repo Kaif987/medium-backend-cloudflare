@@ -22,7 +22,7 @@ export function Blog() {
                     {blog.content}
                 </div>
             </article>
-            <div className="space-y-6">
+            <div className="space-y-6 hidden sm:block">
                 <div className="space-y-2">
                     <h2 className="text-2xl font-semibold">Author</h2>
                     <div className="space-y-1">

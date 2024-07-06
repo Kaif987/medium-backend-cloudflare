@@ -16,7 +16,7 @@ export function Appbar() {
     const name = user?.name || "Anonymous"
 
     return (
-        <nav className="flex justify-between p-5">
+        <nav className="flex justify-between py-2">
             <Link to="/blogs" className="font-medium text-xl">
                 Medium
             </Link>

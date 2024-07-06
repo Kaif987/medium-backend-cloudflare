@@ -24,6 +24,7 @@ export function Auth({ type }: { type: "signup" | "signin" }) {
             const response = await axios.post(`${BACKEND_URI}/api/v1/user/${type}`,
                 postInputs
             )
+
             const data = response.data
             login(data)
             navigate("/blogs")
