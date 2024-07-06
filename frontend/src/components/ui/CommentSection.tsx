@@ -25,7 +25,7 @@ type CommentStructure = {
 export function CommentSection({ comments, postId }: CommentSectionProps) {
     const [commentValue, setCommentValue] = useState<string>("")
     const [commentsArray, setCommentsArray] = useState<CommentStructure[]>(comments)
-    const [editMode, setEditMode] = useState<Boolean>(false)
+    const [editMode, setEditMode] = useState<boolean>(false)
     const [currentEditedCommentId, setCurrentEditedCommentId] = useState<string>("")
     const commentBoxRef = useRef<HTMLTextAreaElement>(null)
     const { user } = useAuth()
